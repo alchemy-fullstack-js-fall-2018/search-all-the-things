@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
-const Paging = ({ currentPage, totalPages, updatePage }) => {
+const Paging = ({ currentPage, updatePage }) => {
 
   return (
     <Fragment>
       <button onClick={() => updatePage(currentPage - 1)}>Previous</button>
-      <span>{currentPage} out of {totalPages}</span>
+      <span> Page: {currentPage}</span>
       <button onClick={() => updatePage(currentPage + 1)}>Next</button>
     </Fragment>
   );

@@ -54,6 +54,8 @@
   },
   "dependencies": {
     "dom-to-image": "^2.6.0",
+    "dotenv": "^6.1.0",
+    "dotenv-webpack": "^1.5.7",
     "file-saver": "^2.0.0-rc.4",
     "react": "^16.6.1",
     "react-dom": "^16.6.1",
