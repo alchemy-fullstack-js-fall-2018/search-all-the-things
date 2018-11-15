@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pager Component should be a pager 1`] = `
+<div>
+  <span>
+    1
+     out of 
+    5
+     pages
+  </span>
+  <button
+    className="pageButton"
+    onClick={[Function]}
+  >
+    Next
+  </button>
+</div>
+`;

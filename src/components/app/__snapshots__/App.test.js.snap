@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App Component should be a app 1`] = `
+<main
+  className="main"
+>
+  <Header />
+  <SearchBox
+    onChange={[Function]}
+    onPageSize={[Function]}
+    onSearch={[Function]}
+    pageSize={20}
+    query=""
+  />
+  <Footer />
+</main>
+`;

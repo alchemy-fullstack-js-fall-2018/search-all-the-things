@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchBox Component should be a searchBox 1`] = `
+<React.Fragment>
+  <h2>
+    Search the news!
+  </h2>
+  <form>
+    <p>
+      search: 
+      dog
+    </p>
+    <div
+      className="searchForm"
+    >
+      <label
+        htmlFor="query"
+      >
+        Search terms
+      </label>
+      <input
+        name="query"
+        onChange={[Function]}
+        type="text"
+        value="dog"
+      />
+      <label
+        htmlFor="pageSize"
+      >
+        Page size
+      </label>
+      <select
+        defaultValue={20}
+        name="pageSize"
+        onChange={[Function]}
+      >
+        <option
+          value={5}
+        >
+          5
+        </option>
+        <option
+          value={10}
+        >
+          10
+        </option>
+        <option
+          value={20}
+        >
+          20
+        </option>
+        <option
+          value={50}
+        >
+          50
+        </option>
+      </select>
+    </div>
+    <button
+      onClick={[Function]}
+      type="submit"
+    >
+      FIND IT
+    </button>
+  </form>
+</React.Fragment>
+`;

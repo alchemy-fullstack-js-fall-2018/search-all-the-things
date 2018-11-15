@@ -1,0 +1,22 @@
+.searchForm {
+  display: grid;
+  grid-template-columns: 300px 300px;
+  margin: 0px 15%;
+}
+.searchForm label {
+  justify-self: end;
+  margin: 5px;
+}
+
+.searchForm input {
+  justify-self: start;
+  margin: 5px;
+}
+.searchForm input[type=text] {
+  width: 100%;
+}
+
+.searchForm select {
+  justify-self: start;
+  margin: 5px;
+}
