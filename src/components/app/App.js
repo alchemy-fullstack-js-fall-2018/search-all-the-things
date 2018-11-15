@@ -26,34 +26,45 @@ export default class App extends Component {
     this.setState({ [target.name]: target.value });
   };
 
+  updatePage = page => {
+    this.setState({ currentPage: page });
+  };
+
   updateResults = (event) => {
     event.preventDefault();
     const { query, pageSize, currentPage } = this.state;
     const options = { query, pageSize, currentPage };
     getNews(options)
       .then(({ totalCount, results }) => {
+        const totalPages = Math.ceil(totalCount / pageSize);
         this.setState({ results });
         this.setState({ totalCount });
+        this.setState({ totalPages });
       });
-
   };
+
+
 
   render() {
 
 
-    const { query, isLoading, pageSize, results, totalCount } = this.state;
+    const { query, isLoading, pageSize, results,
+      totalCount, totalPages, currentPage } = this.state;
 
 
     return (
       <main className={styles.main}>
         <Header />
         {
-          isLoading || results ?
+          isLoading || (results && totalCount && totalPages) ?
             <ResultsBox
               isLoading = {isLoading}
               pageSize = {pageSize}
               results = {results}
               totalCount = {totalCount}
+              totalPages = {totalPages}
+              currentPage = {currentPage}
+              updatePage = {this.updatePage}
             />
             :
             <SearchBox

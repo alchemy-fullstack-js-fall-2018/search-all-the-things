@@ -11,11 +11,15 @@ export default class App extends Component {
     isLoading: PropTypes.bool.isRequired,
     pageSize: PropTypes.number.isRequired,
     results: PropTypes.array.isRequired,
+    totalCount: PropTypes.number.isRequired,
+    totalPages: PropTypes.number.isRequired,
+    currentPage: PropTypes.number.isRequired,
+    updatePage: PropTypes.func.isRequired,
   };
 
   render() {
 
-    const { isLoading, results  } = this.props;
+    const { isLoading, results, currentPage, totalCount, totalPages, updatePage  } = this.props;
 
     const loadingGif = <img src='https://media.giphy.com/media/l41lFw057lAJQMwg0/giphy.gif' alt="loading" />;
 
@@ -30,7 +34,11 @@ export default class App extends Component {
             <Results
               results = {results}
             />
-            <Pager />
+            <Pager
+              currentPage = {currentPage}
+              totalPages = {totalPages}
+              updatePage = {updatePage}
+            />
           </Fragment>
         }
 
