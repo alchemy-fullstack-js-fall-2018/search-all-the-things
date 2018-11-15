@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 export default class Results extends Component {
   static propTypes = {
     getNews: PropTypes.func.isRequired,
-    searchResults: PropTypes.string.isRequired
+    searchRequest: PropTypes.string.isRequired,
+    currentPage: PropTypes.number.isRequired,
+    updateTotalResults: PropTypes.func.isRequired
   };
 
   state = {
@@ -12,34 +14,43 @@ export default class Results extends Component {
   };
 
   updateResults = () => {
-    const { getNews, searchResults } = this.props;
-    getNews(searchResults)
-      .then(({ results }) =>
-        this.setState({ results })
-      );
+    const { getNews, searchRequest, currentPage, updateTotalResults } = this.props;
+
+    getNews(searchRequest, currentPage)
+      .then(({ results, totalResults }) => {
+        this.setState({ results });
+        updateTotalResults(totalResults);
+      });
   };
 
   componentDidMount() {
-    this.updateResults();
+    if(this.props.searchRequest.length > 0) {
+      this.updateResults();
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    const pageChanged = prevProps.currentPage !== this.props.currentPage;
+    const searchRequestChanged = prevProps.searchRequest !== this.props.searchRequest;
+
+    if(this.props.searchRequest.length > 0 && (pageChanged || searchRequestChanged)) {
+      this.updateResults();
+    }
   }
 
   render() {
     const { results } = this.state;
     const listArticles = results.map(result => {
-      return <li key={result.title}>{result.title}</li>;
+      return <li key={result.url}>{result.title}</li>;
     });
     return (
       <Fragment>
-      debugger;
-        <h1>Hello World</h1>
-        <ul>
-          <li>{listArticles}</li>
-        </ul>
+        <h1>Welcome to the News!</h1>
+        <ul>{listArticles}</ul>
 
       </Fragment>
     );
   }
 
 
-  // getNews({props.searchResults})
-};
+}

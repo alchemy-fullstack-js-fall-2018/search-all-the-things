@@ -1,17 +1,17 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
-const Search = ({ updateSearchResults }) => {
+const Search = ({ updateSearchRequest }) => {
 
   return (
     <Fragment>
-      <input name='searchResults' id='search' onChange={updateSearchResults} />
+      <input name='searchRequest' id='search' onChange={updateSearchRequest} />
     </Fragment>
   );
 };
 
 Search.prototypes = {
-  updateSearchResults: PropTypes.func.isRequired
+  updateSearchRequest: PropTypes.func.isRequired
 };
 
 export default Search;
