@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Results Component should be a results 1`] = `
+<React.Fragment>
+  <p>
+    Your search for 
+    "dog"
+     returned 
+    <strong>
+      100
+    </strong>
+     results
+  </p>
+  <section
+    className="news"
+  >
+    <a
+      className="newsItem"
+      href="https://www.nytimes.com/2018/10/20/style/dog-creative-grooming.html"
+    >
+      <h3>
+        O.M.G. Look at That Dog!
+      </h3>
+      <img
+        alt="O.M.G. Look at That Dog!"
+        className="newsImage"
+        src="https://static01.nyt.com/images/2018/10/20/autossell/20dog-groomers8/20dog-groomers8-facebookJumbo.jpg"
+      />
+      <p>
+        At the Groom Expo, the world’s largest creative grooming industry event, held in Hershey, Pa., dogs are every color of the rainbow. But the practice is not without its critics.
+      </p>
+    </a>
+    <a
+      className="newsItem"
+      href="https://lifehacker.com/how-to-win-over-someone-elses-cat-1830434400"
+    >
+      <h3>
+        How to Win Over Someone Else's Cat
+      </h3>
+      <img
+        alt="How to Win Over Someone Else's Cat"
+        className="newsImage"
+        src="https://i.kinja-img.com/gawker-media/image/upload/s--JLdZq7vU--/c_fill,fl_progressive,g_center,h_900,q_80,w_1600/zxef6myamigmnh9aoasi.jpg"
+      />
+      <p>
+        Cats aren’t dogs. And if you want to make friends with a new cat, you don’t treat it like a dog. You patiently figure out what works for this particular cat, and you don’t expect it to work every time. But the slow process of befriending a cat makes it deeply…
+      </p>
+    </a>
+  </section>
+</React.Fragment>
+`;
