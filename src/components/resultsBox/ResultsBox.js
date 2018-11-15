@@ -22,7 +22,11 @@ export default class App extends Component {
 
     const { isLoading, results, currentPage, totalCount, totalPages, updatePage, query  } = this.props;
 
-    const loadingGif = <img src='https://media.giphy.com/media/l41lFw057lAJQMwg0/giphy.gif' alt="loading" />;
+    const loadingGif = <img
+      className={styles.loader}
+      src='https://media.giphy.com/media/l41lFw057lAJQMwg0/giphy.gif'
+      alt="loading"
+    />;
 
 
     return (
