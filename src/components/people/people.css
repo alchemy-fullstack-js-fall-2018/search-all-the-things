@@ -1,0 +1,16 @@
+.people {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.person {
+  position: relative;
+}
+
+h3 {
+  position: absolute;
+  bottom: 0;
+  background-color: #f6f6f6;
+}
