@@ -13,13 +13,16 @@ export default class App extends Component {
     const { results } = this.props;
 
     const news = results.map(newsItem => {
-      return <li key={newsItem.url}>{newsItem.title}</li>;
+      return <div key={newsItem.url}>
+        <h3>{newsItem.title}</h3>
+        <p>{newsItem.description}</p>
+      </div>;
     });
 
     return (
-      <ul>
+      <section className={styles.news}>
         {news}
-      </ul>
+      </section>
     );
   }
 }
