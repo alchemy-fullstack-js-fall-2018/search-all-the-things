@@ -8,6 +8,7 @@ export default class App extends Component {
     query: PropTypes.string.isRequired,
     pageSize: PropTypes.number.isRequired,
     onChange: PropTypes.func.isRequired,
+    onPageSize: PropTypes.func.isRequired,
     onSearch: PropTypes.func.isRequired
   };
 
@@ -15,7 +16,7 @@ export default class App extends Component {
   render() {
 
 
-    const { query, pageSize, onChange, onSearch } = this.props;
+    const { query, pageSize, onChange, onPageSize, onSearch } = this.props;
 
 
     const pageSizeOptions = [5, 10, 20, 50]
@@ -36,7 +37,7 @@ export default class App extends Component {
             <label htmlFor="pageSize">Page size</label>
             <select
               name="pageSize" defaultValue={pageSize}
-              onChange={onChange}
+              type="number" onChange={onPageSize}
             >{pageSizeOptions}
             </select>
           </div>

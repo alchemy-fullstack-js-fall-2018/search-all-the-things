@@ -26,11 +26,15 @@ export default class App extends Component {
     this.setState({ [target.name]: target.value });
   };
 
+  onPageSize = ({ target }) => {
+    this.setState({ pageSize: parseInt(target.value) });
+  };
+
   onSearch = (event) => {
     event.preventDefault();
     this.setState({ isLoading: true });
     this.updateResults();
-    this.setState({isLoading: false });
+    this.setState({ isLoading: false });
   };
 
   updatePage = page => {
@@ -79,6 +83,7 @@ export default class App extends Component {
               query = {query}
               pageSize = {pageSize}
               onChange = {this.onChange}
+              onPageSize = {this.onPageSize}
               onSearch = {this.onSearch}
             />
         }
