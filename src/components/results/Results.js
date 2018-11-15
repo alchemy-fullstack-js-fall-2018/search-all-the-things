@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 export default class Results extends Component {
     static propTypes = {
       currentPage: PropTypes.number.isRequired,
+      searchResults: PropTypes.string.isRequired,
       getResults: PropTypes.func.isRequired,
       ResultComponent: PropTypes.func.isRequired
     };
@@ -13,9 +14,10 @@ export default class Results extends Component {
     };
 
     updateResults = () => {
-      const { currentPage, getResults } = this.props;
+      const { currentPage, getResults, searchResults } = this.props;
+      console.log(searchResults);
 
-      getResults(currentPage)
+      getResults(searchResults, currentPage)
         .then(({ results }) => {
           this.setState({ results });
         });
@@ -26,7 +28,9 @@ export default class Results extends Component {
     }
 
     componentDidUpdate(prevProps) {
-      if(prevProps.currentPage !== this.props.currentPage) {
+      const pageChanged = prevProps.currentPage !== this.props.currentPage;
+      const searchResultsChanged = prevProps.searchResults !== this.props.searchResults;
+      if((pageChanged || searchResultsChanged)) {
         this.updateResults();
       }
     }
