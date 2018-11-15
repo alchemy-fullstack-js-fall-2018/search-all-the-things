@@ -6,6 +6,7 @@ export default class Results extends Component {
       currentPage: PropTypes.number.isRequired,
       searchResults: PropTypes.string.isRequired,
       getResults: PropTypes.func.isRequired,
+      updateTotalResults: PropTypes.func.isRequired,
       ResultComponent: PropTypes.func.isRequired
     };
 
@@ -14,12 +15,12 @@ export default class Results extends Component {
     };
 
     updateResults = () => {
-      const { currentPage, getResults, searchResults } = this.props;
-      console.log(searchResults);
+      const { currentPage, getResults, searchResults, updateTotalResults } = this.props;
 
       getResults(searchResults, currentPage)
-        .then(({ results }) => {
+        .then(({ totalResults, results }) => {
           this.setState({ results });
+          updateTotalResults(totalResults);
         });
     };
 

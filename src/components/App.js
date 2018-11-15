@@ -6,14 +6,19 @@ import News from './news/News';
 import { getNews } from './services/newsApi';
 
 export default class App extends Component {
+  
   state = {
     currentPage: 1,
-    // totalPages: 1
+    totalResults: 1,
     searchResults: ''
   };
 
   updatePage = page => {
     this.setState({ currentPage: page });
+  };
+
+  updateTotalResults = totalResults => {
+    this.setState({ totalResults });
   };
 
 
@@ -22,18 +27,19 @@ export default class App extends Component {
   };
 
   render() {
-    const { currentPage, searchResults } = this.state;
+    const { currentPage, searchResults, totalResults } = this.state;
     return (
       <Fragment>
-        <h1>Hello World</h1>
+        <h1>Search The News</h1>
         <Search updateSearchResults={this.updateSearchResults} searchResults={searchResults}/>
         <Results
           currentPage={currentPage}
           getResults={getNews}
           searchResults={searchResults}
+          updateTotalResults={this.updateTotalResults}
           ResultComponent={News}
         />
-        <Paging currentPage={currentPage} updatePage={this.updatePage} />
+        <Paging currentPage={currentPage} totalResults={totalResults} updatePage={this.updatePage} />
       </Fragment>
     );
   }

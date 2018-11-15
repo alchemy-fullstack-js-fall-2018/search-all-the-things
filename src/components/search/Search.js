@@ -10,7 +10,7 @@ const Search = ({ updateSearchResults, searchResults }) => {
   );
 };
 
-Search.prototypes = {
+Search.propTypes = {
   updateSearchResults: PropTypes.func.isRequired
 };
 
