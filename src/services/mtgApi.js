@@ -1,6 +1,12 @@
-const getResource = (page, resource) => {
+const getResource = (page, resource, query) => {
 
-  const myRequest = `https://api.magicthegathering.io/v1/${resource}?page=${page}`;
+  query.page = page;
+  const queryString = Object.keys(query).map((key) => {
+    return encodeURIComponent(key) + '=' + encodeURIComponent(query[key]);
+  }).join('&');
+
+  const myRequest = `https://api.magicthegathering.io/v1/${resource}?${queryString}`;
+
   let totalResults;
   let totalPages;
 
@@ -21,8 +27,8 @@ const getResource = (page, resource) => {
     .catch(function(error) { console.log(error);}); /* eslint-disable-line no-console */
 };
 
-export const getCards = page => {
-  return getResource(page, 'cards');
+export const getCards = (page, query) => {
+  return getResource(page, 'cards', query);
 };
 
 // Possibly add getSets later on

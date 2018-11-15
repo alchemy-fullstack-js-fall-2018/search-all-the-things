@@ -9,7 +9,10 @@ export default class App extends Component {
 
   state = {
     currentPage: 1,
-    totalPages: 1
+    totalPages: 1,
+    query: {
+      rarity: 'rare'
+    }
   };
 
   updatePage = page => {
@@ -21,7 +24,7 @@ export default class App extends Component {
   };
 
   render() {
-    const { currentPage, totalPages } = this.state;
+    const { currentPage, totalPages, query } = this.state;
     return (
       <Fragment>
         <h1>Magic the Gathering</h1>
@@ -31,6 +34,7 @@ export default class App extends Component {
             updateTotalPages={this.updateTotalPages}
             getResults={getCards}
             ResultComponent={Card}
+            query={query}
           />
         </div>
       </Fragment>

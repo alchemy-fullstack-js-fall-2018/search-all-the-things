@@ -6,7 +6,8 @@ export default class Results extends Component {
     currentPage: PropTypes.number.isRequired,
     updateTotalPages: PropTypes.func.isRequired,
     getResults: PropTypes.func.isRequired,
-    ResultComponent: PropTypes.func.isRequired
+    ResultComponent: PropTypes.func.isRequired,
+    query: PropTypes.object.isRequired
   };
 
   state = {
@@ -14,9 +15,8 @@ export default class Results extends Component {
   };
 
   updateResults = () => {
-    const { currentPage, updateTotalPages, getResults } = this.props;
-
-    getResults(currentPage)
+    const { currentPage, updateTotalPages, getResults, query } = this.props;
+    getResults(currentPage, query)
       .then(({ totalPages, results }) => {
         this.setState({ results });
         updateTotalPages(totalPages);
