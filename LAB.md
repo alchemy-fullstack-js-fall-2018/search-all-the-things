@@ -46,7 +46,6 @@ all are going to work!. Requirements:
 ## Testing Requirements
 
 Test components:	
-- Trigger events	
 - Use snapshot testing	
     - Include each state if component has multiple representations	
 
