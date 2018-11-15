@@ -4,16 +4,17 @@ import Paging from '../paging/Paging';
 
 export default class Articles extends Component {
   state = {
-    currentPage: 1,
+    currentPage: 2,
     totalPages: 1,
+    pageSize: 10,
     articles: [],
-    search: 'ham',
+    search: 'Rick and Morty',
     loading: false
   };
 
   fetchArticles = () => {
-    const { currentPage, search } = this.state;
-    getArticles(currentPage, search)
+    const { currentPage, pageSize, search } = this.state;
+    getArticles(currentPage, pageSize, search)
       .then(res => {
         this.setState({
           totalPages: '',
@@ -51,7 +52,7 @@ export default class Articles extends Component {
 const Article = ({ title, author, url }) => {
   return <div>
     <h2>{title}</h2>
-    <h5>by {author}</h5>
+    <h5>by {author || 'Anonymous'}</h5>
     <a href={url}>Go to Story</a>
   </div>;
 };
