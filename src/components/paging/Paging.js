@@ -14,7 +14,6 @@ const Paging = ({ currentPage, updatePage }) => {
 
 Paging.propTypes = {
   currentPage: PropTypes.number.isRequired,
-  totalPages: PropTypes.number.isRequired,
   updatePage: PropTypes.func.isRequired
 };
 
