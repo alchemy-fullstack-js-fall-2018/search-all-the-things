@@ -1,19 +1,25 @@
 import React, { Component, Fragment } from 'react';
 // import Paging from './paging/Paging';
-// import { getTitles } from '../services/api';
+import { getBooks } from '../services/api';
 // import Results from './results/Results';
-// import Book from './book/Book';
+import Books from './book/Books';
 
 export default class App extends Component {
     state = {
         currentPage: 1,
         totalPages: 1,
-        title: ''
+        title: '',
+        results: []
     };
 
     onChange = ({ target }) => {
         this.setState({ [target.name]: target.value });
         console.log(target.value);
+        getBooks()
+            .then((results) => {
+                this.setState({ results });
+                console.log({ results });
+            });
     };
 
     updatePage = page => {
@@ -24,6 +30,8 @@ export default class App extends Component {
         this.setState({ totalPages });
     };
 
+    
+
     render() {
         const { title } = this.state;
         return (
@@ -33,6 +41,7 @@ export default class App extends Component {
                     <label>Book Title:<br/>
                         <input name="title" value={title} onChange={this.onChange} />
                     </label><br/>
+                    <Books />
                 </form>
             </Fragment>
         );
