@@ -1,16 +1,33 @@
 import React, { Component } from 'react';
 import { getBooks } from '../../services/api';
+import PropTypes from 'prop-types';
 
 export default class Books extends Component {
+    static propTypes = {
+        title: PropTypes.string
+    };
+    
     state = {
         books: []
     };
 
-    componentDidMount() {
-        getBooks()
+    updateResults = () => {
+        const { title } = this.props;
+        console.log('title', title);
+        getBooks(title)
             .then(res => {
                 this.setState({ books: res });
             });
+    }
+
+    componentDidMount() {
+        this.updateResults();
+    }
+
+    componentDidUpdate(prevProps) {
+        if(prevProps.title !== this.props.title) {
+            this.updateResults();
+        }
     }
 
     render() {

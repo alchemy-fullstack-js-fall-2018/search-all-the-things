@@ -30,18 +30,16 @@ export default class App extends Component {
         this.setState({ totalPages });
     };
 
-    
-
     render() {
         const { title } = this.state;
         return (
             <Fragment>
                 <h1>Hello World</h1>
                 <form>
-                    <label>Book Title:<br/>
+                    <label>Book Title Search:<br/>
                         <input name="title" value={title} onChange={this.onChange} />
                     </label><br/>
-                    <Books />
+                    { title && <Books title={title}/> }
                 </form>
             </Fragment>
         );
