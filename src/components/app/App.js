@@ -39,7 +39,9 @@ export default class App extends Component {
 
   updatePage = page => {
     this.setState({ currentPage: page });
+    this.setState({ isLoading: true });
     this.updateResults();
+    this.setState({ isLoading: false });
   };
 
   updateResults = () => {
