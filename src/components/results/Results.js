@@ -46,7 +46,7 @@ export default class Results extends Component {
     const listArticles = results.map(result => {
       return <li key={result.url}>
         <span>
-          <b>{result.title}: </b>
+          <h2><b>{result.title}: </b></h2>
           {result.description}
         </span>
         <img src={result.urlToImage} />
@@ -55,7 +55,6 @@ export default class Results extends Component {
 
     return (
       <Fragment>
-        <h1>Headlines</h1>
         <ul id={styles.results}>{listArticles}</ul>
       </Fragment>
     );
