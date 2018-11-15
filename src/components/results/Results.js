@@ -17,9 +17,9 @@ export default class Results extends Component {
     const { currentPage, updateTotalPages, getResults } = this.props;
 
     getResults(currentPage)
-      .then(({ total, results }) => {
+      .then(({ totalPages, results }) => {
         this.setState({ results });
-        updateTotalPages(total);
+        updateTotalPages(totalPages);
       });
   };
 
