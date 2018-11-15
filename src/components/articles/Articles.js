@@ -27,6 +27,16 @@ export default class Articles extends Component {
     this.fetchArticles();
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if(prevState.search !== this.state.search) {
+      this.fetchArticles()
+    }
+  }
+
+  handleChange = ({ target }) => {
+    this.setState({ [target.name]: target.value });
+  }
+
   render() {
     const { articles, currentPage, totalPages, loading } = this.state;
 
@@ -40,6 +50,11 @@ export default class Articles extends Component {
     return (
       <Fragment>
         Hello News?
+        <div>
+          <label htmlFor="search">Search:</label>
+          <input name="search" type="text" onChange={this.handleChange}/>
+        </div>
+
         <Paging currentPage={currentPage}/>
         <div>
           {articlesComponents}
