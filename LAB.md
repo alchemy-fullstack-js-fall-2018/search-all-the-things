@@ -10,7 +10,7 @@ _Possible_ API choices:
 * https://developers.google.com/books/
 * https://pokeapi.co/api/v2/
 * https://swapi.co/
-* https://newsapi.org/ (the one used in class)
+* https://newsapi.org/
 
 Part of this assignment is to research the API you are going to use. Don't assume these
 all are going to work!. Requirements:
