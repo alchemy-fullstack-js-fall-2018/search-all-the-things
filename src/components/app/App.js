@@ -30,40 +30,32 @@ export default class App extends Component {
     this.setState({ pageSize: parseInt(target.value) });
   };
 
-  onSearch = (event) => {
-    event.preventDefault();
-    this.setState({ isLoading: true });
-    this.updateResults();
-    this.setState({ isLoading: false });
-  };
-
-  updatePage = page => {
-    this.setState({ currentPage: page });
-    this.setState({ isLoading: true });
-    this.updateResults();
-    this.setState({ isLoading: false });
-  };
-
   updateResults = () => {
+    this.setState({ isLoading: true });
     const { query, pageSize, currentPage } = this.state;
     const options = { query, pageSize, currentPage };
     getNews(options)
       .then(({ totalCount, results }) => {
         const totalPages = Math.ceil(totalCount / pageSize);
-        this.setState({ results });
-        this.setState({ totalCount });
-        this.setState({ totalPages });
+        this.setState({ results, totalCount, totalPages, isLoading: false });
       });
   };
 
+  onSearch = (event) => {
+    event.preventDefault();
+    this.updateResults();
+  };
 
+  updatePage = page => {
+    this.setState({ currentPage: page }, () => {
+      this.updateResults();
+    });
+  };
 
   render() {
 
-
     const { query, isLoading, pageSize, results,
       totalCount, totalPages, currentPage } = this.state;
-
 
     return (
       <main className={styles.main}>
