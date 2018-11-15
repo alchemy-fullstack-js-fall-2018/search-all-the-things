@@ -11,7 +11,7 @@ export default class App extends Component {
     currentPage: 1,
     totalPages: 1,
     query: {
-      rarity: 'rare'
+      rarity: 'mythic rare'
     }
   };
 
