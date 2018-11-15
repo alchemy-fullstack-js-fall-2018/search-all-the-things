@@ -8,14 +8,14 @@ export default class App extends Component {
     query: PropTypes.string.isRequired,
     pageSize: PropTypes.number.isRequired,
     onChange: PropTypes.func.isRequired,
-    updateResults: PropTypes.func.isRequired
+    onSearch: PropTypes.func.isRequired
   };
 
 
   render() {
 
 
-    const { query, pageSize, onChange, updateResults } = this.props;
+    const { query, pageSize, onChange, onSearch } = this.props;
 
 
     const pageSizeOptions = [5, 10, 20, 50]
@@ -42,7 +42,7 @@ export default class App extends Component {
           </div>
           <button
             type="submit"
-            onClick={updateResults}
+            onClick={onSearch}
           >FIND IT</button>
         </form>
 

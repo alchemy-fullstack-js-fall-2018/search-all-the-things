@@ -26,12 +26,17 @@ export default class App extends Component {
     this.setState({ [target.name]: target.value });
   };
 
-  updatePage = page => {
-    this.setState({ currentPage: page });
+  onSearch = (event) => {
+    event.preventDefault();
+    this.updateResults();
   };
 
-  updateResults = (event) => {
-    event.preventDefault();
+  updatePage = page => {
+    this.setState({ currentPage: page });
+    this.updateResults();
+  };
+
+  updateResults = () => {
     const { query, pageSize, currentPage } = this.state;
     const options = { query, pageSize, currentPage };
     getNews(options)
@@ -71,7 +76,7 @@ export default class App extends Component {
               query = {query}
               pageSize = {pageSize}
               onChange = {this.onChange}
-              updateResults = {this.updateResults}
+              onSearch = {this.onSearch}
             />
         }
         <Footer />
