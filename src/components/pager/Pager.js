@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import styles from './Pager.css';
 
-export default class App extends Component {
+export default class Pager extends Component {
 
   static propTypes = {
     currentPage: PropTypes.number.isRequired,

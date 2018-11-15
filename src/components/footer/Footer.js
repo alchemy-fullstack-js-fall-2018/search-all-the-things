@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import styles from './Footer.css';
 
-export default class App extends Component {
+export default class Footer extends Component {
 
 
   render() {

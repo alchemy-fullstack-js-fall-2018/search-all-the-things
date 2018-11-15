@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import styles from './Results.css';
 
-export default class App extends Component {
+export default class Results extends Component {
 
   static propTypes = {
     results: PropTypes.array.isRequired,
@@ -15,10 +15,19 @@ export default class App extends Component {
     const { results, totalCount, query } = this.props;
 
     const news = results.map(newsItem => {
-      return <div key={newsItem.url}>
+      return <a
+        key={newsItem.url}
+        href={newsItem.url}
+        className={styles.newsItem}
+      >
         <h3>{newsItem.title}</h3>
+        {newsItem.urlToImage && <img
+          className={styles.newsImage}
+          src={newsItem.urlToImage}
+          alt={newsItem.title}/>
+        }
         <p>{newsItem.description}</p>
-      </div>;
+      </a>;
     });
 
     return (

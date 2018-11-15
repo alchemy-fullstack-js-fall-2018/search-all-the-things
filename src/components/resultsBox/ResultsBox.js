@@ -6,28 +6,28 @@ import Results from '../results/Results.js';
 
 import styles from './ResultsBox.css';
 
-export default class App extends Component {
+export default class ResultsBox extends Component {
   static propTypes = {
     isLoading: PropTypes.bool.isRequired,
     pageSize: PropTypes.number.isRequired,
-    results: PropTypes.array.isRequired,
+    results: PropTypes.array,
     query: PropTypes.string.isRequired,
-    totalCount: PropTypes.number.isRequired,
-    totalPages: PropTypes.number.isRequired,
+    totalCount: PropTypes.number,
+    totalPages: PropTypes.number,
     currentPage: PropTypes.number.isRequired,
     updatePage: PropTypes.func.isRequired,
   };
 
   render() {
 
-    const { isLoading, results, currentPage, totalCount, totalPages, updatePage, query  } = this.props;
+    const { isLoading, results, currentPage,
+      totalCount, totalPages, updatePage, query  } = this.props;
 
     const loadingGif = <img
       className={styles.loader}
       src='https://media.giphy.com/media/l41lFw057lAJQMwg0/giphy.gif'
       alt="loading"
     />;
-
 
     return (
       <Fragment>
