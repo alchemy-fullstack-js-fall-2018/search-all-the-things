@@ -1,0 +1,17 @@
+#results {
+  width: 75vw;
+  li {
+    display: flex;
+    flex-direction: column;
+    border: 5px solid grey;
+    list-style: none;
+    margin: 20px;
+    padding: 25px;
+  }
+  img {
+    align-self: center;
+    margin: 10px;
+    width: 65%;
+    text-align: center;
+  }
+}

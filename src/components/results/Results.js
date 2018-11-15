@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import styles from './Results.css';
 
 export default class Results extends Component {
   static propTypes = {
@@ -14,9 +15,9 @@ export default class Results extends Component {
   };
 
   updateResults = () => {
-    const { getNews, searchRequest, currentPage, updateTotalResults } = this.props;
+    const { getNews, searchRequest, currentPage, updateTotalResults, resultsPerPage } = this.props;
 
-    getNews(searchRequest, currentPage)
+    getNews(searchRequest, currentPage, resultsPerPage)
       .then(({ results, totalResults }) => {
         this.setState({ results });
         updateTotalResults(totalResults);
@@ -32,22 +33,30 @@ export default class Results extends Component {
   componentDidUpdate(prevProps) {
     const pageChanged = prevProps.currentPage !== this.props.currentPage;
     const searchRequestChanged = prevProps.searchRequest !== this.props.searchRequest;
+    const resultsPerPageChanged = prevProps.resultsPerPage !== this.props.resultsPerPage;
 
-    if(this.props.searchRequest.length > 0 && (pageChanged || searchRequestChanged)) {
+    if(this.props.searchRequest.length > 0 && (pageChanged || searchRequestChanged || resultsPerPageChanged)) {
       this.updateResults();
     }
   }
 
   render() {
+
     const { results } = this.state;
     const listArticles = results.map(result => {
-      return <li key={result.url}>{result.title}</li>;
+      return <li key={result.url}>
+        <span>
+          <b>{result.title}: </b>
+          {result.description}
+        </span>
+        <img src={result.urlToImage} />
+      </li>;
     });
+
     return (
       <Fragment>
-        <h1>Welcome to the News!</h1>
-        <ul>{listArticles}</ul>
-
+        <h1>Headlines</h1>
+        <ul id={styles.results}>{listArticles}</ul>
       </Fragment>
     );
   }

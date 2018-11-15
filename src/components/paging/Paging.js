@@ -2,22 +2,22 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styles from './Paging.css';
 
-const Paging = ({ currentPage, updatePage, totalResults }) => {
-  const totalPages = Math.ceil(totalResults / 20);
+const Paging = ({ currentPage, updatePage, totalResults, resultsPerPage }) => {
+  const totalPages = Math.ceil(totalResults / resultsPerPage);
   return (
 
 
     <Fragment>
       <div id={styles.paging}>
         <button onClick={()=> updatePage(currentPage - 1)}>Previous Results</button>
-        <h1>{currentPage} of {totalPages}</h1>
+        <h3>{currentPage} of {totalPages}</h3>
         <button onClick={()=> updatePage(currentPage + 1)}>Next Results</button>
       </div>
     </Fragment>
   );
 };
 
-Paging.protoTypes = {
+Paging.propTypes = {
   currentPage: PropTypes.number.isRequired,
   updatePage: PropTypes.func.isRequired,
 };

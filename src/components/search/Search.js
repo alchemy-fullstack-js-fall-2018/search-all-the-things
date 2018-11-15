@@ -5,6 +5,7 @@ const Search = ({ updateSearchRequest }) => {
 
   return (
     <Fragment>
+      <label htmlFor='search'>Search </label>
       <input name='searchRequest' id='search' onChange={updateSearchRequest} />
     </Fragment>
   );
