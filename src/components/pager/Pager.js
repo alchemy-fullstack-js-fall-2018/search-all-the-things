@@ -19,13 +19,15 @@ export default class App extends Component {
       <div>
 
         <button
+          className={styles.pageButton}
           onClick={() => updatePage(currentPage - 1)}
         >Previous
         </button>
 
-        <span>{currentPage} out of {totalPages}</span>
+        <span>{currentPage} out of {totalPages} pages</span>
 
         <button
+          className={styles.pageButton}
           onClick={() => updatePage(currentPage + 1)}
         >Next
         </button>
