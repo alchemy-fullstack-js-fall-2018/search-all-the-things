@@ -6,20 +6,16 @@ import styles from './SearchBox.css';
 export default class App extends Component {
   static propTypes = {
     query: PropTypes.string.isRequired,
-    pageSize: PropTypes.number.isRequired
+    pageSize: PropTypes.number.isRequired,
+    onChange: PropTypes.func.isRequired,
+    updateResults: PropTypes.func.isRequired
   };
-
-  state = {
-
-  };
-
 
 
   render() {
 
 
-    const {  } = this.state;
-    const { query, pageSize } = this.props;
+    const { query, pageSize, onChange, updateResults } = this.props;
 
 
     const pageSizeOptions = [5, 10, 20, 50]
@@ -30,21 +26,24 @@ export default class App extends Component {
       <Fragment>
         <h2>Search the news!</h2>
         <form>
+          {query && <p>search: {query}</p>}
           <div className={styles.searchForm}>
-            {query && <p>search: {query}</p>}
             <label htmlFor="query">search term</label>
             <input
               name="query" value={query}
-              type="text" onChange={this.onChange}
+              type="text" onChange={onChange}
             ></input>
             <label htmlFor="pageSize">Page size</label>
             <select
               name="pageSize" defaultValue={pageSize}
-              onChange={this.onChange}
+              onChange={onChange}
             >{pageSizeOptions}
             </select>
           </div>
-          <button type="submit">FIND IT</button>
+          <button
+            type="submit"
+            onClick={updateResults}
+          >FIND IT</button>
         </form>
 
       </Fragment>

@@ -1,6 +1,7 @@
 /* eslint-env node */
 //const CleanPlugin = require('clean-webpack-plugin');
 const HtmlPlugin = require('html-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   // start here
@@ -19,7 +20,8 @@ module.exports = {
   plugins: [
     // add plugins
     //new CleanPlugin('./dist/bundle.*.js'),
-    new HtmlPlugin({ template: './src/index.html' })
+    new HtmlPlugin({ template: './src/index.html' }),
+    new Dotenv()
   ],
   module: {
     rules: [
