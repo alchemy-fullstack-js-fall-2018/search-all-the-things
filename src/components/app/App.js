@@ -28,7 +28,9 @@ export default class App extends Component {
 
   onSearch = (event) => {
     event.preventDefault();
+    this.setState({ isLoading: true });
     this.updateResults();
+    this.setState({isLoading: false });
   };
 
   updatePage = page => {
@@ -66,6 +68,7 @@ export default class App extends Component {
               isLoading = {isLoading}
               pageSize = {pageSize}
               results = {results}
+              query = {query}
               totalCount = {totalCount}
               totalPages = {totalPages}
               currentPage = {currentPage}

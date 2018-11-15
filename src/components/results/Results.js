@@ -7,10 +7,12 @@ export default class App extends Component {
 
   static propTypes = {
     results: PropTypes.array.isRequired,
+    totalCount: PropTypes.number.isRequired,
+    query: PropTypes.string.isRequired
   };
 
   render() {
-    const { results } = this.props;
+    const { results, totalCount, query } = this.props;
 
     const news = results.map(newsItem => {
       return <div key={newsItem.url}>
@@ -20,9 +22,12 @@ export default class App extends Component {
     });
 
     return (
-      <section className={styles.news}>
-        {news}
-      </section>
+      <Fragment>
+        <p>Your search for {`"${query}"`} returned <strong>{totalCount}</strong> results</p>
+        <section className={styles.news}>
+          {news}
+        </section>
+      </Fragment>
     );
   }
 }

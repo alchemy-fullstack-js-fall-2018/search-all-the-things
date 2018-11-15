@@ -11,6 +11,7 @@ export default class App extends Component {
     isLoading: PropTypes.bool.isRequired,
     pageSize: PropTypes.number.isRequired,
     results: PropTypes.array.isRequired,
+    query: PropTypes.string.isRequired,
     totalCount: PropTypes.number.isRequired,
     totalPages: PropTypes.number.isRequired,
     currentPage: PropTypes.number.isRequired,
@@ -19,7 +20,7 @@ export default class App extends Component {
 
   render() {
 
-    const { isLoading, results, currentPage, totalCount, totalPages, updatePage  } = this.props;
+    const { isLoading, results, currentPage, totalCount, totalPages, updatePage, query  } = this.props;
 
     const loadingGif = <img src='https://media.giphy.com/media/l41lFw057lAJQMwg0/giphy.gif' alt="loading" />;
 
@@ -33,6 +34,8 @@ export default class App extends Component {
           <Fragment>
             <Results
               results = {results}
+              query = {query}
+              totalCount = {totalCount}
             />
             <Pager
               currentPage = {currentPage}
