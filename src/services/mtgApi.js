@@ -1,11 +1,10 @@
+import queryString from 'querystring';
+
 const getResource = (page, resource, query) => {
 
   query.page = page;
-  const queryString = Object.keys(query).map((key) => {
-    return encodeURIComponent(key) + '=' + encodeURIComponent(query[key]);
-  }).join('&');
-
-  const myRequest = `https://api.magicthegathering.io/v1/${resource}?${queryString}`;
+  const qryString = queryString.stringify(query);
+  const myRequest = `https://api.magicthegathering.io/v1/${resource}?${qryString}`;
 
   let totalResults;
   let totalPages;

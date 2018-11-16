@@ -6,10 +6,10 @@ const Card = ({ result }) => {
 
   return (
     <li>
-      <h3>Name: {name}</h3>
+      <img src={imageUrl} />
+      <h3>{name}</h3>
       <p>Types: {types}</p>
       <p>Rarity: {rarity}</p>
-      <img src={imageUrl} />
     </li>
   );
 

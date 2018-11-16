@@ -23,6 +23,10 @@ export default class App extends Component {
     this.setState({ totalPages });
   };
 
+  updateQuery = query => {
+    this.setState({ query });
+  };
+
   render() {
     const { currentPage, totalPages, query } = this.state;
     return (
