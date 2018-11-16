@@ -25,7 +25,10 @@ export default class App extends Component {
   };
 
   onQueryItemChange = ({ target }) => {
-    this.setState({ query:{ [target.name]: target.value } });
+    // let query = { ...this.state.query };
+    // query[target.name] = target.value;
+    // this.setState({ query, currentPage: 1 });
+    this.setState({ currentPage: 1, query:{ [target.name]: target.value } });
   };
 
   render() {

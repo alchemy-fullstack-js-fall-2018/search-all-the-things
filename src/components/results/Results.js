@@ -28,7 +28,7 @@ export default class Results extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if(prevProps.currentPage !== this.props.currentPage) {
+    if(prevProps.currentPage !== this.props.currentPage || prevProps.query !== this.props.query) {
       this.updateResults();
     }
   }
