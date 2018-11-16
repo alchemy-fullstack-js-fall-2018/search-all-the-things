@@ -1,30 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const Query = ({ updateQuery }) => {
+const Query = ({ query, onQueryItemChange }) => {
 
-  const rarityOptions = ['Times', 'Courier', 'Arial'].map(font => {
-    return <option key={font} value={font}>{font}</option>
+  const rarityOptions = ['common', 'uncommon', 'rare', 'mythic rare'].map(option => {
+    return <option key={option} value={option}>{option}</option>;
   });
 
   return (
-    <form onSubmit={updateQuery}>
+    <form>
       <fieldset>
         <legend>Options</legend>
-        <label htmlFor="header">Header: </label>
+        {/* <label htmlFor="header">Rarity: </label>
         <input name="header" placeholder="enter header here" value={header} onChange={this.onChange} />
 
 
         <label htmlFor="footer">Footer: </label>
-        <input name="footer" placeholder="enter footer here" value={footer} onChange={this.onChange} />
+        <input name="footer" placeholder="enter footer here" value={footer} onChange={this.onChange} /> */}
 
-        <label htmlFor="font">Font family: </label>
-        <select name="font" defaultValue={font} onChange={this.onChange}>
-          {fontOptions}
+        <label htmlFor="rarity">Rarity: </label>
+        <select name="rarity" defaultValue={query.rarity} onChange={onQueryItemChange}>
+          {rarityOptions}
         </select>
-        <p>{font}</p>
 
-        <label htmlFor="color">Font color: </label>
+        {/* <label htmlFor="color">Font color: </label>
         <input name="color" value={color} type="color" onChange={this.onChange} />
         <p>{color}</p>
 
@@ -33,16 +32,15 @@ export const Query = ({ updateQuery }) => {
 
         <label htmlFor="imageUpload"></label>
         <input name="imageUpload" type="file" accept="image/*" onChange={this.onImageUpload} />
-        <p>{imageURL}</p>
-        <button type="submit">Create Image</button>
+        <p>{imageURL}</p> */}
       </fieldset>
     </form>
   );
-
-
-
 };
 
-Query.PropTypes = {
-  updateQuery: PropTypes.func.isRequired
+Query.propTypes = {
+  query: PropTypes.object.isRequired,
+  onQueryItemChange: PropTypes.func.isRequired
 };
+
+export default Query;

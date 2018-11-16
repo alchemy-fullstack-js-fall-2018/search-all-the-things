@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import Paging from './paging/Paging';
 import Results from './results/Results';
 import Card from './card/Card';
+import Query from './query/Query';
 import { getCards } from '../services/mtgApi';
 
 
@@ -23,8 +24,8 @@ export default class App extends Component {
     this.setState({ totalPages });
   };
 
-  updateQuery = query => {
-    this.setState({ query });
+  onQueryItemChange = ({ target }) => {
+    this.setState({ query:{ [target.name]: target.value } });
   };
 
   render() {
@@ -32,6 +33,8 @@ export default class App extends Component {
     return (
       <Fragment>
         <h1>Magic the Gathering</h1>
+        <Query query={query}
+          onQueryItemChange={this.onQueryItemChange}/>
         <Paging currentPage={currentPage} totalPages={totalPages} updatePage={this.updatePage} />
         <div>
           <Results currentPage={currentPage}
