@@ -10,8 +10,8 @@ const getResource = (page, resource, query) => {
   let totalPages = 0;
 
   return fetch(myRequest).then(function(response) {
-    totalResults = response.headers.get('total-count');
-    let pageSize = response.headers.get('page-size');
+    totalResults = parseInt(response.headers.get('total-count'));
+    let pageSize = parseInt(response.headers.get('page-size'));
     totalPages = Math.ceil(totalResults / pageSize);
 
     return response.json();
