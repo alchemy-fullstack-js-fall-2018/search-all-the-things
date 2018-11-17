@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import styles from './results';
+
 export default class Results extends Component {
   static propTypes = {
     currentPage: PropTypes.number.isRequired,
@@ -42,9 +44,11 @@ export default class Results extends Component {
     });
 
     return (
-      <ul>
-        {listItems}
-      </ul>
+      <div className={styles.list}>
+        <ul >
+          {listItems}
+        </ul>
+      </div>
     );
   }
 
