@@ -11,6 +11,7 @@ export default class App extends Component {
   state = {
     currentPage: 1,
     totalPages: 1,
+    totalResults: 0,
     query: {
       rarity: '',
       type: ''
@@ -21,8 +22,8 @@ export default class App extends Component {
     this.setState({ currentPage: page });
   };
 
-  updateTotalPages = totalPages => {
-    this.setState({ totalPages });
+  updateCounts = (totalPages, totalResults) => {
+    this.setState({ totalPages, totalResults });
   };
 
   onQueryItemChange = ({ target }) => {
@@ -31,16 +32,21 @@ export default class App extends Component {
   };
 
   render() {
-    const { currentPage, totalPages, query } = this.state;
+    const { currentPage, totalPages, totalResults, query } = this.state;
     return (
       <Fragment>
         <h1>Magic the Gathering</h1>
         <Query query={query}
-          onQueryItemChange={this.onQueryItemChange}/>
-        <Paging currentPage={currentPage} totalPages={totalPages} updatePage={this.updatePage} />
+          onQueryItemChange={this.onQueryItemChange}
+        />
+        <Paging currentPage={currentPage}
+          totalPages={totalPages}
+          totalResults={totalResults}
+          updatePage={this.updatePage}
+        />
         <div>
           <Results currentPage={currentPage}
-            updateTotalPages={this.updateTotalPages}
+            updateCounts={this.updateCounts}
             getResults={getCards}
             ResultComponent={Card}
             query={query}

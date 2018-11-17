@@ -6,8 +6,8 @@ const getResource = (page, resource, query) => {
   const qryString = queryString.stringify(query);
   const myRequest = `https://api.magicthegathering.io/v1/${resource}?${qryString}`;
 
-  let totalResults;
-  let totalPages;
+  let totalResults = 0;
+  let totalPages = 0;
 
   return fetch(myRequest).then(function(response) {
     totalResults = response.headers.get('total-count');

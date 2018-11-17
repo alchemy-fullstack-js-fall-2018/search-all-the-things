@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './results';
+import styles from './Results.css';
 
 export default class Results extends Component {
   static propTypes = {
     currentPage: PropTypes.number.isRequired,
-    updateTotalPages: PropTypes.func.isRequired,
+    updateCounts: PropTypes.func.isRequired,
     getResults: PropTypes.func.isRequired,
     ResultComponent: PropTypes.func.isRequired,
     query: PropTypes.object.isRequired
@@ -17,11 +17,11 @@ export default class Results extends Component {
   };
 
   updateResults = () => {
-    const { currentPage, updateTotalPages, getResults, query } = this.props;
+    const { currentPage, updateCounts, getResults, query } = this.props;
     getResults(currentPage, query)
-      .then(({ totalPages, results }) => {
+      .then(({ totalPages, totalResults, results }) => {
         this.setState({ results });
-        updateTotalPages(totalPages);
+        updateCounts(totalPages, totalResults);
       });
   };
 
@@ -44,11 +44,13 @@ export default class Results extends Component {
     });
 
     return (
-      <div className={styles.list}>
-        <ul >
-          {listItems}
-        </ul>
-      </div>
+      <Fragment>
+        <div className={styles.list}>
+          <ul >
+            {listItems}
+          </ul>
+        </div>
+      </Fragment>
     );
   }
 
