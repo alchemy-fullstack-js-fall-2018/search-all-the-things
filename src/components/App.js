@@ -12,7 +12,8 @@ export default class App extends Component {
     currentPage: 1,
     totalPages: 1,
     query: {
-      rarity: 'mythic rare'
+      rarity: '',
+      type: ''
     }
   };
 
@@ -25,10 +26,8 @@ export default class App extends Component {
   };
 
   onQueryItemChange = ({ target }) => {
-    // let query = { ...this.state.query };
-    // query[target.name] = target.value;
-    // this.setState({ query, currentPage: 1 });
-    this.setState({ currentPage: 1, query:{ [target.name]: target.value } });
+    const { query } = this.state;
+    this.setState({ currentPage: 1, query:{ ...query, [target.name]: target.value } });
   };
 
   render() {
