@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { getArticles } from '../services/newsApi';
 
+
 export default class Articles extends Component {
     state = {
-      articles: []
+      articles: [],
+      country: ''
     };
 
     componentDidMount() {
-      getArticles()
+      getArticles(this.country)
         .then(res => this.setState({ articles: res.articles }));
     }
     render() {
