@@ -4,7 +4,7 @@ export default function Paging({ currentPage, totalPages, updatePage }) {
   const previousButton = currentPage > 1 && (
     <button onClick={() => updatePage(currentPage - 1)}>&lt;</button>
   );
-  const nextButton = currentPage > 1 && (
+  const nextButton = currentPage < totalPages && (
     <button onClick={() => updatePage(currentPage + 1)}>&gt;</button>
   );
 

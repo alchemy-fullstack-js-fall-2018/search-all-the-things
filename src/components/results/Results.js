@@ -5,8 +5,8 @@ import { getResults } from '../../services/starWarsApi';
 
 export default class Results extends Component {
   state = {
-    currentPage: 3,
-    totalPages: 10,
+    currentPage: 1,
+    totalPages: 1,
     status: '',
     results: []
   };
@@ -16,6 +16,7 @@ export default class Results extends Component {
     this.setState({ results: [] }, () => {
       getResults(currentPage).then(res => {
         this.setState({
+          totalPages: Math.ceil(res.count / 10),
           results: res.results
         });
       });
@@ -31,6 +32,13 @@ export default class Results extends Component {
 
   componentDidMount() {
     this.fetchResults();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if(prevState.currentPage !== this.state.currentPage ||
+      prevState.status !== this.state.status) {
+      this.fetchResults();
+    }
   }
 
   render() {
@@ -72,7 +80,7 @@ export default class Results extends Component {
 
 const Result = ({ name, height }) => {
   return <div>
-    <h3>{name}</h3>
-    <h4>{height}</h4>
+    <h3>Name: {name}</h3>
+    <h4>Height: {height}</h4>
   </div>;
 };
