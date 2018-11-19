@@ -12,3 +12,17 @@ label {
   font-size: 20px;
   padding: 4px;
 }
+
+ol {
+  font-size: 30px;
+  margin: 2px;
+  border: 1px solid green;
+  width: 250px;
+  bottom-border: 1px solid red;
+}
+
+li {
+  border: 1px solid black;
+  text-align: center;
+  padding: 5px;
+}

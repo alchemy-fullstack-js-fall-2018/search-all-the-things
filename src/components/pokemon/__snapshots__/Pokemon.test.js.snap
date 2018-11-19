@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pokemon test renders a list of Pokemon 1`] = `
+<React.Fragment>
+  <label
+    className="label"
+  >
+    Select Abilities
+  </label>
+  <select
+    defaultValue=""
+    name="ability"
+    onChange={[Function]}
+  />
+  <Pageable
+    currentPage={1}
+    totalPages={1}
+    updatePage={[Function]}
+  />
+  <div>
+    <h1>
+      Pokemon List
+    </h1>
+    <ol />
+  </div>
+</React.Fragment>
+`;

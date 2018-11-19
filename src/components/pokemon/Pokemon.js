@@ -71,26 +71,21 @@ export default class Pokemons extends Component {
         <Pageable currentPage={currentPage}
           updatePage={this.handlePageUpdate}
           totalPages={totalPages} />
+
       {loading && <img className={styles.loader} src="https://www.jqueryscript.net/images/jQuery-Animated-Loading-Button-GoButton.jpg" />}
 
-
-    <div>
-    {pokemonComponents}
-    </div>
-
-
-
-
+        <div>
+          <h1>Pokemon List</h1>
+          <ol>{pokemonComponents}</ol>
+        </div>
         </Fragment>
     );
   }
 }
 
 const Pokemon = ({ name }) => {
-  return <div>
-
-    <h1>{name}</h1>
-
-
-  </div>
+  return (
+  <div>
+      <li>{name}</li>
+  </div>)
 };
