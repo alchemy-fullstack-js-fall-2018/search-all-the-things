@@ -57,23 +57,26 @@ export default class Pokemons extends Component {
       return <Pokemon key={pokemon.id}
       name={pokemon.name}/>;
     });
-    // abilities={pokemon.abilities}  line above
 
     return (
       <Fragment>
+        <div className={styles.container}>
         <label className={styles.label}>
           Select Abilities
         </label>
         <select name="ability" defaultValue={ability} onChange={this.handleChange}>
           {abilityOptions}
         </select>
+        </div>
 
+        <div className={styles.pageView}>
+        <h3>Page view</h3>
         <Pageable currentPage={currentPage}
           updatePage={this.handlePageUpdate}
           totalPages={totalPages} />
+        </div>
 
       {loading && <img className={styles.loader} src="https://www.jqueryscript.net/images/jQuery-Animated-Loading-Button-GoButton.jpg" />}
-
         <div>
           <h1>Pokemon List</h1>
           <ol>{pokemonComponents}</ol>
