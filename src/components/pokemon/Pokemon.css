@@ -1,0 +1,45 @@
+.loader {
+  display: block;
+  width: 400px;
+  height: 300px;
+  margin: auto;
+}
+
+label {
+  border: 1px solid black;
+  outline-style: solid;
+  outline-width: thin;
+  font-size: 20px;
+  padding: 2px;
+}
+
+ol {
+  font-size: 30px;
+  margin: 2px;
+  border: 1px solid green;
+  width: 250px;
+  bottom-border: 1px solid red;
+}
+
+li {
+  border: 1px solid black;
+  text-align: center;
+  padding: 5px;
+}
+
+select {
+  margin: 4px;
+  display: block;
+  font-size: 20px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.pageView {
+  display: flex;
+  font-size: 20px;
+}
