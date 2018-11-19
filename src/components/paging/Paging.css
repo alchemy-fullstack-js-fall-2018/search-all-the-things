@@ -1,0 +1,13 @@
+.paging {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 2em;
+  width: 100vw;
+
+  button {
+    width: 100px;
+    background-color: blue;
+    color: white;
+  }
+}

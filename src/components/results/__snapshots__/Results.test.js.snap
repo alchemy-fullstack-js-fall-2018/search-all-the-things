@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Results results snapshot 1`] = `
+Array [
+  <label
+    htmlFor="status"
+  >
+    Search For:
+  </label>,
+  <select
+    defaultValue="people"
+    name="status"
+    onChange={[Function]}
+  >
+    <option
+      value="people"
+    >
+      people
+    </option>
+    <option
+      value="planets"
+    >
+      planets
+    </option>
+    <option
+      value="starships"
+    >
+      starships
+    </option>
+  </select>,
+  <div
+    className="paging"
+  >
+    <span>
+      1
+       out of 
+      1
+    </span>
+  </div>,
+  <h2>
+    LOADING....
+  </h2>,
+  <div
+    className="results"
+  />,
+]
+`;

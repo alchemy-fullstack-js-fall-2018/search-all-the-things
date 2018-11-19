@@ -1,23 +1,25 @@
 import React, { Component, Fragment } from 'react';
-// import getResults from '../../services/starWarsApi';
 import Paging from '../paging/Paging';
 import { getResults } from '../../services/starWarsApi';
+import styles from './Results.css';
 
 export default class Results extends Component {
   state = {
     currentPage: 1,
     totalPages: 1,
     status: 'people',
-    results: []
+    results: [],
+    loading: false
   };
 
   fetchResults = () => {
     const { status, currentPage } = this.state;
-    this.setState({ results: [] }, () => {
+    this.setState({ loading: true, results: [] }, () => {
       getResults(status, currentPage).then(res => {
         this.setState({
           totalPages: Math.ceil(res.count / 10),
-          results: res.results
+          results: res.results,
+          loading: false
         });
       });
     });
@@ -35,17 +37,19 @@ export default class Results extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if(prevState.currentPage !== this.state.currentPage ||
-      prevState.status !== this.state.status) {
+    if(
+      prevState.currentPage !== this.state.currentPage ||
+      prevState.status !== this.state.status
+    ) {
       this.fetchResults();
     }
   }
 
   render() {
-    const { results, currentPage, totalPages, status } = this.state;
+    const { results, currentPage, totalPages, status, loading } = this.state;
 
     const resultsComponent = results.map(result => {
-      return <Result key={result.name} name={result.name} height={result.height} />
+      return <Result key={result.name} name={result.name} />;
     });
 
     const statusOptions = ['people', 'planets', 'starships'].map(status => {
@@ -58,6 +62,7 @@ export default class Results extends Component {
 
     return (
       <Fragment>
+        <label htmlFor="status">Search For:</label>
         <select
           name="status"
           defaultValue={status}
@@ -70,17 +75,17 @@ export default class Results extends Component {
           updatePage={this.handlePageUpdate}
           totalPages={totalPages}
         />
-        <div>
-          {resultsComponent}
-        </div>
+        {loading && <h2>LOADING....</h2>}
+        <div className={styles.results}>{resultsComponent}</div>
       </Fragment>
     );
   }
 }
 
-const Result = ({ name, height }) => {
-  return <div>
-    <h3>Name: {name}</h3>
-    <h4>Height: {height}</h4>
-  </div>;
+const Result = ({ name }) => {
+  return (
+    <div className={styles.result}>
+      <h3>Name: {name}</h3>
+    </div>
+  );
 };

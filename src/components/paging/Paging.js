@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './Paging.css';
 
 export default function Paging({ currentPage, totalPages, updatePage }) {
   const previousButton = currentPage > 1 && (
@@ -9,7 +10,7 @@ export default function Paging({ currentPage, totalPages, updatePage }) {
   );
 
   return (
-    <div>
+    <div className={styles.paging}>
       {previousButton}
       <span>
         {currentPage} out of {totalPages}
