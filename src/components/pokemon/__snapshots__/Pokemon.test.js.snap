@@ -2,21 +2,32 @@
 
 exports[`Pokemon test renders a list of Pokemon 1`] = `
 <React.Fragment>
-  <label
-    className="label"
+  <div
+    className="container"
   >
-    Select Abilities
-  </label>
-  <select
-    defaultValue=""
-    name="ability"
-    onChange={[Function]}
-  />
-  <Pageable
-    currentPage={1}
-    totalPages={1}
-    updatePage={[Function]}
-  />
+    <label
+      className="label"
+    >
+      Select Abilities
+    </label>
+    <select
+      defaultValue=""
+      name="ability"
+      onChange={[Function]}
+    />
+  </div>
+  <div
+    className="pageView"
+  >
+    <h3>
+      Page view
+    </h3>
+    <Pageable
+      currentPage={1}
+      totalPages={1}
+      updatePage={[Function]}
+    />
+  </div>
   <div>
     <h1>
       Pokemon List
