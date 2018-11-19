@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import Pokemon from '../pokemon/Pokemon';
+import React from 'react';
+import Pokemons from '../pokemon/Pokemon';
 
 export default function app() {
   return (
-    <Pokemon />
+    <Pokemons />
   );
 }

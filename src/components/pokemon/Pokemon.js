@@ -1,25 +1,24 @@
 import React, { Component, Fragment } from 'react';
-import { getPokemon } from '../../services/pokemonApi';
+import { getPokemon, getAbilities } from '../../services/pokemonApi';
 import styles from './Pokemon.css';
 import Pageable from '../paging/Paging';
 
-export default class Pokemon extends Component {
+export default class Pokemons extends Component {
   state = {
     loading: false,
     currentPage: 1,
     totalPages: 1,
-    effect: '',
-    short_effect: '',
+    ability: '',
+    abilities: [],
     pokemons: []
   };
 
   fetchPokemon = () => {
-    const { currentPage, effect, short_effect } = this.state;
+    const { currentPage, ability } = this.state;
     this.setState({ loading: true, pokemons: [] }, () => {
-      getPokemon(currentPage, { effect, short_effect })
+      getPokemon(currentPage, { ability } )
         .then(res => {
           this.setState({
-            totalPages: res.info.pages,
             pokemons: res.results,
             loading: false
           })
@@ -27,25 +26,71 @@ export default class Pokemon extends Component {
     });
   }
 
+  componentDidMount() {
+    getAbilities().then(abilities => this.setState({abilities}));
+    this.fetchPokemon();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if(prevState.currentPage !== this.state.currentPage ||
+      prevState.ability !== this.state.ability) {
+      this.fetchPokemon();
+    }
+  }
+
+  handlePageUpdate = page => {
+    this.setState({ currentPage: page });
+  };
+
+  handleChange = ({ target }) => {
+    this.setState({ [target.name]: target.value });
+  };
+
   render() {
-    const { loading, pokemons, effect, short_effect, currentPage, totalPages } = this.state;
+    const { loading, currentPage, totalPages, ability, abilities, pokemons } = this.state;
+
+    const abilityOptions = abilities.map(ability => {
+      return <option key={ability} value={ability}>{ability}</option>;
+    });
 
     const pokemonComponents = pokemons.map(pokemon => {
       return <Pokemon key={pokemon.id}
-      name={pokemon.name} />;
+      name={pokemon.name}/>;
     });
+    // abilities={pokemon.abilities}  line above
 
     return (
       <Fragment>
-        <select name="status" >
-
+        <label className={styles.label}>
+          Select Abilities
+        </label>
+        <select name="ability" defaultValue={ability} onChange={this.handleChange}>
+          {abilityOptions}
         </select>
-    )
 
+        <Pageable currentPage={currentPage}
+          updatePage={this.handlePageUpdate}
+          totalPages={totalPages} />
+      {loading && <img className={styles.loader} src="https://www.jqueryscript.net/images/jQuery-Animated-Loading-Button-GoButton.jpg" />}
+
+
+    <div>
+    {pokemonComponents}
+    </div>
+
+
+
+
+        </Fragment>
+    );
   }
-
-
-
-
-
 }
+
+const Pokemon = ({ name }) => {
+  return <div>
+
+    <h1>{name}</h1>
+
+
+  </div>
+};

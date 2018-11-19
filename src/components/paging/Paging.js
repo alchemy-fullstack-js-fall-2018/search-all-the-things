@@ -1,24 +1,14 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
+import styles from './Paging.css';
 
-// This is passed in props and being destructured
-const Paging = ({ currentPage, totalPages, updatePage }) => {
-  // Could do this
-  //const { currentPage, updatePage } = props
+export default function Pageable({ currentPage, totalPages, updatePage }) {
+  const previousButton = currentPage > 1 && <button onClick={() => updatePage(currentPage - 1)}>&lt;</button>;
 
   return (
-    <Fragment>
-      <button onClick={() => updatePage(currentPage - 1)}>Previous</button>
+    <div className={styles.pageable}>
+      {previousButton}
       <span>{currentPage} out of {totalPages}</span>
-      <button onClick={() => updatePage(currentPage + 1)}>Next</button>
-    </Fragment>
+      <button onClick={() => updatePage(currentPage + 1)}>&gt;</button>
+    </div>
   );
-};
-
-Paging.propTypes = {
-  currentPage: PropTypes.number.isRequired,
-  totalPages: PropTypes.number.isRequired,
-  updatePage: PropTypes.func.isRequired
-};
-
-export default Paging;
+}

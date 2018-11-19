@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+// import React from 'react';
+// import PropTypes from 'prop-types';
 
-const Pokemon = ({ results }) => {
-  const
-}
+// const Pokemon = ({ results }) => {
+//   const
+// }
