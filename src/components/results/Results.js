@@ -1,14 +1,26 @@
 import React, { Component, Fragment } from 'react';
 // import getResults from '../../services/starWarsApi';
 import Paging from '../paging/Paging';
+import { getResults } from '../../services/starWarsApi';
 
 export default class Results extends Component {
   state = {
     currentPage: 3,
     totalPages: 10,
-    status: ''
+    status: '',
+    results: []
   };
 
+  fetchResults = () => {
+    const { currentPage } = this.state;
+    this.setState({ results: [] }, () => {
+      getResults(currentPage).then(res => {
+        this.setState({
+          results: res.results
+        });
+      });
+    });
+  };
   //totalPages = Math.ceil(total number of items / by the page size)
   handleChange = ({ target }) => {
     this.setState({ [target.name]: target.value });
@@ -17,11 +29,23 @@ export default class Results extends Component {
     this.setState({ currentPage: page });
   };
 
+  componentDidMount() {
+    this.fetchResults();
+  }
+
   render() {
-    const { currentPage, totalPages, status } = this.state;
+    const { results, currentPage, totalPages, status } = this.state;
+
+    const resultsComponent = results.map(result => {
+      return <Result key={result.name} name={result.name} height={result.height} />
+    });
 
     const statusOptions = ['people', 'planets', 'starships'].map(status => {
-      return <option key={status} value={status}>{status}</option>;
+      return (
+        <option key={status} value={status}>
+          {status}
+        </option>
+      );
     });
 
     return (
@@ -38,7 +62,17 @@ export default class Results extends Component {
           updatePage={this.handlePageUpdate}
           totalPages={totalPages}
         />
+        <div>
+          {resultsComponent}
+        </div>
       </Fragment>
     );
   }
 }
+
+const Result = ({ name, height }) => {
+  return <div>
+    <h3>{name}</h3>
+    <h4>{height}</h4>
+  </div>;
+};
