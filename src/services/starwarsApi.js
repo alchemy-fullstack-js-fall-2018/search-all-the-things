@@ -1,4 +1,4 @@
-export const getResults = (page) => {
-  return fetch(`https://swapi.co/api/people/?page=${page}`)
+export const getResults = (status, page) => {
+  return fetch(`https://swapi.co/api/${status}/?page=${page}`)
     .then(res => res.json());
 };

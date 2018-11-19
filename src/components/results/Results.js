@@ -7,14 +7,14 @@ export default class Results extends Component {
   state = {
     currentPage: 1,
     totalPages: 1,
-    status: '',
+    status: 'people',
     results: []
   };
 
   fetchResults = () => {
-    const { currentPage } = this.state;
+    const { status, currentPage } = this.state;
     this.setState({ results: [] }, () => {
-      getResults(currentPage).then(res => {
+      getResults(status, currentPage).then(res => {
         this.setState({
           totalPages: Math.ceil(res.count / 10),
           results: res.results
