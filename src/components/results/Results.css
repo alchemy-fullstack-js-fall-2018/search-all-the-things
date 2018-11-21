@@ -1,9 +1,10 @@
 #results {
   width: 75vw;
+
   li {
     display: flex;
     flex-direction: column;
-    border: 5px solid grey;
+    border: 5px solid black;
     list-style: none;
     background: lightblue;
     margin: 20px;

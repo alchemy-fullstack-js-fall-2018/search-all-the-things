@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styles from './Results.css';
+import { getNews } from '../../services/newsApi';
+
 
 export default class Results extends Component {
   static propTypes = {
@@ -15,7 +17,7 @@ export default class Results extends Component {
   };
 
   updateResults = () => {
-    const { getNews, searchRequest, currentPage, updateTotalResults, resultsPerPage } = this.props;
+    const { searchRequest, currentPage, updateTotalResults, resultsPerPage } = this.props;
 
     getNews(searchRequest, currentPage, resultsPerPage)
       .then(({ results, totalResults }) => {

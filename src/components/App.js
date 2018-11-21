@@ -3,14 +3,14 @@ import Search from './search/Search';
 import Results from './results/Results';
 import Paging from './paging/Paging';
 import ResultsPerPage from './search/ResultsPerPage';
-import { getNews } from '../services/newsApi';
+import Header from './Header';
 import styles from './App.css';
 
 export default class App extends Component {
 
   state = {
     currentPage: 1,
-    totalResults: 1,
+    totalResults: 0,
     resultsPerPage: 10,
     searchRequest: ''
   };
@@ -39,8 +39,7 @@ export default class App extends Component {
     return (
       <Fragment>
         <div id={styles.landingPage}>
-          <h1>Headlines Now!</h1>
-          <h2><i>Your #1 Source for the News</i></h2>
+          <Header />
           <div id={styles.searchBar}>
             <Search updateSearchRequest={this.updateSearchRequest} />
             <ResultsPerPage updateResultsPerPage={this.updateResultsPerPage} />
@@ -52,7 +51,6 @@ export default class App extends Component {
             updatePage={this.updatePage}
           />
           <Results
-            getNews={getNews}
             searchRequest={searchRequest}
             updateTotalResults={this.updateTotalResults}
             currentPage={currentPage}
