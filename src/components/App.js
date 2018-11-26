@@ -41,8 +41,8 @@ export default class App extends Component {
                         />
                     </label>
                     <br />
-                    {title && <Books title={title} />}
                 </form>
+                {title && <Books title={title} />}
             </Fragment>
         );
     }
