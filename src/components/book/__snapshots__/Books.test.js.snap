@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`books books snapshot 1`] = `
+Array [
+  <h1>
+    test
+  </h1>,
+  <span>
+    1
+     out of 
+  </span>,
+  <div />,
+]
+`;
