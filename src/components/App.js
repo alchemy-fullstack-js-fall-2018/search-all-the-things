@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-// import Paging from './paging/Paging';
 import { getBooks } from '../services/api';
 // import Results from './results/Results';
 import Books from './book/Books';
@@ -14,12 +13,9 @@ export default class App extends Component {
 
     onChange = ({ target }) => {
         this.setState({ [target.name]: target.value });
-        console.log(target.value);
-        getBooks()
-            .then((results) => {
-                this.setState({ results });
-                console.log({ results });
-            });
+        getBooks().then(results => {
+            this.setState({ results });
+        });
     };
 
     updatePage = page => {
@@ -34,12 +30,18 @@ export default class App extends Component {
         const { title } = this.state;
         return (
             <Fragment>
-                <h1>Hello World</h1>
                 <form>
-                    <label>Book Title Search:<br/>
-                        <input name="title" value={title} onChange={this.onChange} />
-                    </label><br/>
-                    { title && <Books title={title}/> }
+                    <label>
+                        Book Title Search:
+                        <br />
+                        <input
+                            name="title"
+                            value={title}
+                            onChange={this.onChange}
+                        />
+                    </label>
+                    <br />
+                    {title && <Books title={title} />}
                 </form>
             </Fragment>
         );
